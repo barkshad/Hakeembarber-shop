@@ -1,7 +1,20 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import Container from '../components/Container';
 import { BUSINESS_INFO } from '../constants';
+
+const pageVariants = {
+  initial: { opacity: 0 },
+  in: { opacity: 1 },
+  out: { opacity: 0 },
+};
+
+const pageTransition = {
+  type: 'tween',
+  ease: 'anticipate',
+  duration: 0.5,
+} as const;
 
 const Contact: React.FC = () => {
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -11,16 +24,29 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="bg-brand-dark py-20 min-h-screen">
+    <motion.div 
+      className="bg-brand-dark py-20 min-h-screen"
+      initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}
+    >
       <Container>
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <h1 className="font-heading text-6xl uppercase text-white">Get In Touch</h1>
           <p className="text-lg text-gray-400 mt-2">Book your appointment or drop us a line.</p>
           <div className="mt-4 w-24 h-1 bg-brand-gold mx-auto"></div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="bg-brand-gray p-8 rounded-lg border border-gray-800">
+          <motion.div 
+            className="bg-brand-gray p-8 rounded-lg border border-gray-800"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+          >
             <h2 className="text-3xl font-heading uppercase text-brand-gold mb-6">Contact Information</h2>
             
             <div className="space-y-4 text-lg">
@@ -36,14 +62,23 @@ const Contact: React.FC = () => {
               ))}
             </div>
 
-            <div className="mt-10">
+            <motion.div 
+              className="mt-10"
+              animate={{ scale: [1, 1.03, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', repeatDelay: 3 }}
+            >
               <a href={`https://wa.me/${BUSINESS_INFO.whatsapp}`} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-green-500 text-white font-bold py-4 px-10 rounded-md hover:bg-green-600 transition-colors duration-300 uppercase text-lg tracking-wider">
                 Book on WhatsApp
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="bg-brand-gray p-8 rounded-lg border border-gray-800">
+          <motion.div 
+            className="bg-brand-gray p-8 rounded-lg border border-gray-800"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.4 }}
+          >
             <h2 className="text-3xl font-heading uppercase text-brand-gold mb-6">Send a Message</h2>
             <form onSubmit={handleFormSubmit} className="space-y-6">
               <div>
@@ -59,15 +94,26 @@ const Contact: React.FC = () => {
                 <textarea name="message" id="message" rows={5} required className="w-full bg-brand-dark border border-gray-600 rounded-md py-3 px-4 text-white focus:ring-brand-gold focus:border-brand-gold"></textarea>
               </div>
               <div>
-                <button type="submit" className="w-full bg-brand-gold text-brand-dark font-bold py-4 px-10 rounded-md hover:bg-amber-400 transition-colors duration-300 uppercase text-lg tracking-wider">
+                <motion.button 
+                  type="submit" 
+                  className="w-full bg-brand-gold text-brand-dark font-bold py-4 px-10 rounded-md hover:bg-amber-400 transition-colors duration-300 uppercase text-lg tracking-wider"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   Send Message
-                </button>
+                </motion.button>
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="mt-16 rounded-lg overflow-hidden border-4 border-brand-gray">
+        <motion.div 
+          className="mt-16 rounded-lg overflow-hidden border-4 border-brand-gray"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
           <iframe
             src={BUSINESS_INFO.mapSrc}
             width="100%"
@@ -76,11 +122,11 @@ const Contact: React.FC = () => {
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Google Maps Location"
+            title="Hakeem Barber Studio Location on Google Maps"
           ></iframe>
-        </div>
+        </motion.div>
       </Container>
-    </div>
+    </motion.div>
   );
 };
 

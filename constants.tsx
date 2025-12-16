@@ -6,13 +6,13 @@ export const BUSINESS_INFO = {
   phone: "+11234567890",
   whatsapp: "+11234567890",
   email: "contact@hakeemstudio.com",
-  address: "123 Style Street, Grooming City, 10101",
+  address: "Kilifi, near St. Thomas Girls Secondary School, Kenya",
   hours: {
     "Monday - Friday": "9:00 AM - 7:00 PM",
     "Saturday": "10:00 AM - 6:00 PM",
     "Sunday": "Closed"
   },
-  mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.613943340578!2d-73.9878440845941!3d40.74844097932822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1672898313451!5m2!1sen!2sus"
+  mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.83574447814!2d39.85290867591041!3d-3.633116942978052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183f3eeb24803733%3A0x6a65527f4f6e3002!2sSt.%20Thomas%20Girls'%20Secondary%20School!5e0!3m2!1sen!2ske!4v1717144455806!5m2!1sen!2ske"
 };
 
 export const SERVICES: Service[] = [

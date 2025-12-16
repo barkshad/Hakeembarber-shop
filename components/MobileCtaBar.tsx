@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { BUSINESS_INFO } from '../constants';
 
 const PhoneIcon = () => (
@@ -14,27 +15,30 @@ const WhatsAppIcon = () => (
     </svg>
 );
 
-
 const MobileCtaBar: React.FC = () => {
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 bg-brand-gray/90 backdrop-blur-sm z-50 p-2 border-t border-gray-700 shadow-[0_-2px_10px_rgba(0,0,0,0.3)]">
       <div className="flex justify-around items-center space-x-2">
-        <a 
+        <motion.a 
           href={`tel:${BUSINESS_INFO.phone}`} 
           className="flex-1 flex items-center justify-center bg-gray-600 text-white font-bold py-3 px-4 rounded-md hover:bg-gray-500 transition-colors duration-300 text-sm uppercase tracking-wider"
+          whileTap={{ scale: 0.95 }}
         >
           <PhoneIcon />
           Call Now
-        </a>
-        <a 
+        </motion.a>
+        <motion.a 
           href={`https://wa.me/${BUSINESS_INFO.whatsapp}`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 flex items-center justify-center bg-brand-gold text-brand-dark font-bold py-3 px-4 rounded-md hover:bg-amber-400 transition-colors duration-300 text-sm uppercase tracking-wider"
+          whileTap={{ scale: 0.95 }}
+          animate={{ scale: [1, 1.03, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
           <WhatsAppIcon />
           WhatsApp
-        </a>
+        </motion.a>
       </div>
     </div>
   );
